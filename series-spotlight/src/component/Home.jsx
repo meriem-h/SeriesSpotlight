@@ -1,4 +1,6 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
