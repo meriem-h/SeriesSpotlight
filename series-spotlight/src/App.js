@@ -2,8 +2,10 @@ import React from 'react';
 import "./App.css";
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from "./component/Header"
 import Home from "./component/Home"
 import Login from "./component/Login"
+import ShowInfo from "./component/ShowInfo";
 
 const API_KEY = process.env.REACT_APP_API_KEY
 const API_SECRET_KEY = process.env.REACT_APP_SECRET_API_KEY
@@ -61,10 +63,12 @@ export default function App() {
 
   return (
 
-    <div className="App">
+    <div className="App min-h-screen text-white bg-slate-900">
       <Router basename="/">
+        <Header />
         <Routes>
           <Route path="/" element={homePage} />
+          <Route path="/showInfo/:id" element={<ShowInfo />} />
         </Routes>
       </Router>
     </div>

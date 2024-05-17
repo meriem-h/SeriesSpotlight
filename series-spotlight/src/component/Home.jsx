@@ -22,15 +22,26 @@ export default function Home() {
   // }, []);
 
   return (
-    <section>
+    <main>
       <h1>page home</h1>
-      {/* className="flex flex-col items-center" */}
-      <article>
-        <Header />
-        <div className="flex flex-col items-center">
+      <section>
+        <article className="flex flex-col items-center">
+          <h1>Ma liste : </h1>
           <Random />
-        </div>
-      </article>
-    </section>
+        </article>
+        <article className="flex flex-col items-center">
+          <h1>A découvrire : </h1>
+          <Random />
+        </article>
+        <article className="flex flex-col items-center">
+          <h1>le plus poulaire : </h1>
+          <Random />
+        </article>
+        <article className="flex flex-col items-center">
+          <h1>A découvrire : </h1>
+          <Random />
+        </article>
+      </section>
+    </main>
   );
 }
