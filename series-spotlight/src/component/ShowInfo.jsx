@@ -33,11 +33,9 @@ export default function ShowInfo() {
 
   return (
     <main className="">
-
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
       {/*             fiche serie              */}
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-
       <section className="flex gap-4 w-[90%] p-6 bg-slate-700 bg-opacity-80 m-auto">
         {/* info left side */}
         <aside className="w-[27%]">
@@ -97,18 +95,30 @@ export default function ShowInfo() {
           />
         </figure>
       </section>
-
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
       {/*          liste des saison            */}
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-
-      <section></section> 
-
+      <section className="flex gap-4">
+        {info.seasons_details &&
+          info.seasons_details.map((season, index) => (
+            <figure key={index} className="relative w-[17%] ">
+              <img
+                src={info.images?.show}
+                alt={info.title}
+                className="rounded-2xl w-full blur-[1px]"
+              />
+              <figcaption className="absolute inset-0 flex justify-center items-center">
+                <p className="text-center text-shadow">
+                  saison : {season.number} - {season.episodes} épisodes
+                </p>
+              </figcaption>
+            </figure>
+          ))}
+      </section>
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
       {/*          liste des acteur            */}
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-      <section></section> 
-
+      <section></section>
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
       {/*              similaire               */}
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
