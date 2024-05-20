@@ -6,8 +6,7 @@ import Header from "./component/Header"
 import Home from "./component/Home"
 import Footer from "./component/Footer"
 import Login from "./component/Login"
-// import ShowInfo from "./component/ShowInfo";
-import ShowInfo from "./component/ShowInfoBis";
+import ShowInfo from "./component/ShowInfo";
 
 const API_KEY = process.env.REACT_APP_API_KEY
 const API_SECRET_KEY = process.env.REACT_APP_SECRET_API_KEY
