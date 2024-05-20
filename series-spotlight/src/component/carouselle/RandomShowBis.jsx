@@ -12,39 +12,39 @@ export default function RandomShow() {
   const poster =
     "https://rukminim1.flixcart.com/image/416/416/k2p1q4w0/poster/t/v/q/medium-poster-for-room-and-office-motivational-poster-for-walls-original-imafen2z5gejnuzq.jpeg?q=70";
 
-  // function Arrow(props) {
-  //   const { className, style, onClick } = props;
-  //   return (
-  //     <div
-  //       className={className}
-  //       style={{
-  //         ...style,
-  //         display: "block",
-  //         background: "#0F172A",
-  //         borderRadius: "50%",
-  //         paddingTop: "1.5px",
-  //       }}
-  //       onClick={onClick}
-  //     />
-  //   );
-  // }
+  function Arrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "#0F172A",
+          borderRadius: "50%",
+          paddingTop: "1.5px",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
 
-  // var settings = {
-  //   className: "slider variable-width",
-  //   variableWidth: true,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 5,
-  //   slidesToScroll: 1,
+  var settings = {
+    className: "slider variable-width",
+    variableWidth: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
 
-  //   onSwipe: true,
-  //   centerMode: true,
-  //   // autoplay: true,
-  //   autoplaySpeed: 3500,
-  //   // pauseOnHover: true,
-  //   nextArrow: <Arrow />,
-  //   prevArrow: <Arrow />,
-  // };
+    onSwipe: true,
+    centerMode: true,
+    // autoplay: true,
+    autoplaySpeed: 3500,
+    // pauseOnHover: true,
+    nextArrow: <Arrow />,
+    prevArrow: <Arrow />,
+  };
 
   useEffect(() => {
     console.log(randShows);
@@ -53,7 +53,7 @@ export default function RandomShow() {
   useEffect(() => {
     const options = { method: "GET", headers: { "X-BetaSeries-Key": API_KEY } };
 
-    fetch("https://api.betaseries.com/shows/random?nb=20", options)
+    fetch("https://api.betaseries.com/shows/random?nb=10", options)
       .then((res) => res.json())
       .then((res) => setRandShows(res.shows))
       .catch((err) => console.error(err));
@@ -64,25 +64,9 @@ export default function RandomShow() {
   };
 
   return (
-    <main className="">
-      <section className=" flex gap-5  mb-4 scrollBarStyled overflow-y-hidden">
-
-        <article className="flex gap-5 mt-4 scrollBarStyled overflow-y-hidden">
-            {randShows.map((show) => (
-                <figure  className="p-2 " onClick={() => handleShowInfo(show.id)}>
-                  <div className="w-[10em] h-[14em] overflow-hidden">
-                    <img
-                      src={show.images.poster == null ? poster : show.images.poster}
-                      alt=""
-                      className="w-full h-full object-cover p-2 bg-slate-700 rounded-md"
-                    />
-                  </div>
-                </figure>
-              ))}
-          </article>
-
-
-        {/* <Slider {...settings} className="">
+    <main className="w-[90%]">
+      <section className="slider-container">
+        <Slider {...settings} className="">
           {randShows.map((show) => (
             <article
               key={show.id}
@@ -106,7 +90,7 @@ export default function RandomShow() {
               )}
             </article>
           ))}
-        </Slider> */}
+        </Slider>
       </section>
     </main>
   );

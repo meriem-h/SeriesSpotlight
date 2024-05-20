@@ -24,21 +24,22 @@ export default function Home() {
   return (
     <main>
       <h1>page home</h1>
-      <section>
-        <article className="flex flex-col items-center">
-          <h1>Ma liste : </h1>
+      <section className="w-[90%] m-auto">
+        <article className="">
+          <h1 className="border-b-2">Ma liste : </h1>
           <Random />
         </article>
-        <article className="flex flex-col items-center">
-          <h1>A découvrire : </h1>
+        
+        <article className="">
+          <h1 className="border-b-2">A découvrire : </h1>
           <Random />
         </article>
-        <article className="flex flex-col items-center">
-          <h1>le plus poulaire : </h1>
+        <article className="">
+          <h1 className="border-b-2">le plus poulaire : </h1>
           <Random />
         </article>
-        <article className="flex flex-col items-center">
-          <h1>A découvrire : </h1>
+        <article className="">
+          <h1 className="border-b-2">A découvrire : </h1>
           <Random />
         </article>
       </section>
