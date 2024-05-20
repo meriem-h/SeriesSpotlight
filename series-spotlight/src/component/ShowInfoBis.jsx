@@ -10,7 +10,8 @@ export default function ShowInfo() {
   const navigate = useNavigate();
   const [info, setInfo] = useState([]);
 
-  const picture = "https://static3.bigstockphoto.com/9/1/3/large1500/31903202.jpg"
+  const picture =
+    "https://static3.bigstockphoto.com/9/1/3/large1500/31903202.jpg";
 
   const options = {
     method: "GET",
@@ -132,49 +133,28 @@ export default function ShowInfo() {
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
       {/*          liste des acteur            */}
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-      {/* <section className="mt-5">
-        <h1 className="border-b-2 ">Acteurs</h1>
+
+      <section className="mt-5">
+        <h1 className="border-b-2">Acteurs</h1>
         <article className="flex gap-5 mt-4 scrollBarStyled overflow-y-hidden">
           {info.characters &&
             info.characters.map((actor, index) => (
-
-              <figure key={index} className=" ">
-                <div className="">
-                  <img src={actor.picture} alt={actor.actor} className="" />
+              <figure key={index} className="p-2 ">
+                <div className="w-24 h-24 overflow-hidden rounded-full ">
+                  <img
+                    src={actor.picture ? actor.picture : picture}
+                    alt={actor.actor}
+                    className="w-full h-full object-cover rounded-full"
+                  />
                 </div>
-                <figcaption>
-                  <p className="">{actor.actor}</p>
+                <figcaption className="text-center mt-2">
+                  <p>{actor.actor}</p>
+                  <p className="text-slate-600">{actor.name}</p>
                 </figcaption>
               </figure>
-
             ))}
         </article>
-      </section> */}
-
-
-<section className="mt-5">
-  <h1 className="border-b-2">Acteurs</h1>
-  <article className="flex gap-5 mt-4 scrollBarStyled overflow-y-hidden">
-    {info.characters &&
-      info.characters.map((actor, index) => (
-        <figure key={index} className="p-2 ">
-          <div className="w-24 h-24 overflow-hidden rounded-full ">
-            <img src={actor.picture ? actor.picture : picture } alt={actor.actor} className="w-full h-full object-cover rounded-full" />
-          </div>
-          <figcaption className="text-center mt-2">
-            <p>{actor.actor}</p>
-            <p className="text-slate-600">{actor.name}</p>
-          </figcaption>
-        </figure>
-      ))}
-  </article>
-</section>
-
-
-
-
-
-
+      </section>
     </main>
   );
 }
