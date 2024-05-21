@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Header from "./Header";
+import Header from "../Main/Header";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 export default function ShowInfo() {

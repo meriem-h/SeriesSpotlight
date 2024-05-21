@@ -1,11 +1,11 @@
 import React from "react";
-import Discover from "./Liste/DiscoverShow";
-import New from "./Liste/NewShow";
-import Popular from "./Liste/PopularShow";
-import MyListe from "./Liste/MyListe";
+import Discover from "../Liste/DiscoverShow";
+import New from "../Liste/NewShow";
+import Popular from "../Liste/PopularShow";
+import MyListe from "../Liste/MyListe";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "./Header";
+import Header from "../Main/Header";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 export default function Home() {
