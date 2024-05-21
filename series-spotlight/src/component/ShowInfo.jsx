@@ -9,11 +9,16 @@ export default function ShowInfo() {
   const navigate = useNavigate();
   const [info, setInfo] = useState([]);
   const [comments, setComments] = useState([]);
+  const [similar, setSimilar] = useState([]);
+
+  // const img = [];
 
   const picture =
     "https://static3.bigstockphoto.com/9/1/3/large1500/31903202.jpg";
   const banner =
     "https://img.freepik.com/vecteurs-premium/banniere-fond-technologie-bleue-moderne_181182-19714.jpg";
+  // const poster =
+  //   "https://rukminim1.flixcart.com/image/416/416/k2p1q4w0/poster/t/v/q/medium-poster-for-room-and-office-motivational-poster-for-walls-original-imafen2z5gejnuzq.jpeg?q=70";
 
   const options = {
     method: "GET",
@@ -21,6 +26,9 @@ export default function ShowInfo() {
   };
 
   useEffect(() => {
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //      fetch pour les info de cette serie
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     const fetchShowDetails = fetch(
       `https://api.betaseries.com/shows/display?id=${id}`,
       options
@@ -40,6 +48,9 @@ export default function ShowInfo() {
       })
       .catch((err) => console.error(err));
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //      fetch pour les commentaire de cette serie
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     fetch(
       `https://api.betaseries.com/comments/comments?type=show&id=${id}&nbpp=20`,
       options
@@ -47,12 +58,45 @@ export default function ShowInfo() {
       .then((res) => res.json())
       .then((res) => setComments(res.comments))
       .catch((err) => console.error(err));
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //     fetch pour les titre similaire de cette serie
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    // fetch(`https://api.betaseries.com/shows/similars?id=${id}`, options)
+    //   .then((res) => res.json())
+    //   // .then((res) => setSimilar(res.similars))
+    //   .then((res) => {
+    //     res.similars.forEach((element) => {
+    //       console.log(element);
+
+    //       img.push(
+    //       fetch(
+    //         `https://api.betaseries.com/pictures/shows?id=${element.id}`,
+    //         options
+    //       )
+    //       .then((images) => (element.picture = images.url))
+    //       );
+    //     });
+
+    //     Promise.all(img).then(() => {
+    //       setSimilar(res.similars)
+    //     });
+    //   })
+    //   .catch((err) => console.error(err));
+
+
   }, []);
 
   useEffect(() => {
-    console.log("info ==> ", info);
-    console.log("comments ==> ", comments);
+    // console.log("info ==> ", info);
+    // console.log("comments ==> ", comments);
+    // console.log("similar ==> ", similar);
   }, [info, comments]);
+
+  const handleShowInfo = (id) => {
+    navigate(`/showInfo/${id}`);
+  };
 
   return (
     <main className="w-[75%] p-6 m-auto">
@@ -76,7 +120,11 @@ export default function ShowInfo() {
             {info.images?.banner || info.images?.show ? (
               <figure className="">
                 <img
-                  src={info.images?.banner ? info.images?.banner : info.images?.show}
+                  src={
+                    info.images?.banner
+                      ? info.images?.banner
+                      : info.images?.show
+                  }
                   alt={info.title}
                   className="w-full rounded-t-2xl"
                 />
@@ -89,7 +137,9 @@ export default function ShowInfo() {
                   className="rounded-t-2xl w-full opacity-50"
                 />
                 <figcaption className="absolute inset-0 flex justify-center items-center">
-                  <p className="text-center text-shadow text-2xl">{info.title}</p>
+                  <p className="text-center text-shadow text-2xl">
+                    {info.title}
+                  </p>
                 </figcaption>
               </figure>
             )}
@@ -164,7 +214,6 @@ export default function ShowInfo() {
         </article>
       </section>
 
-
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
       {/*              liste des Commentaires             */}
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -225,6 +274,28 @@ export default function ShowInfo() {
           </article>
         </section>
       )}
+
+      {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+      {/*          titre similaire             */}
+      {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+      {/* <section className=" flex gap-5  mb-4 scrollBarStyled overflow-y-hidden">
+        {similar.map((show) => (
+          <figure
+            className="p-2 hover:cursor-pointer"
+            onClick={() => handleShowInfo(show.id)}
+          >
+            <div className="w-[10em] h-[14em] overflow-hidden">
+              <img
+                src={
+                  similar.images?.poster == null ? poster : show.images.poster
+                }
+                alt=""
+                className="w-full h-full object-cover p-2 bg-slate-700 rounded-md"
+              />
+            </div>
+          </figure>
+        ))}
+      </section> */}
     </main>
   );
 }

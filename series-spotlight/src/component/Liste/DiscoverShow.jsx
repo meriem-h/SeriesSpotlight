@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-export default function Popular() {
+export default function Discover() {
   const navigate = useNavigate();
 
   const [randShows, setRandShows] = useState([]);
@@ -12,7 +12,7 @@ export default function Popular() {
   useEffect(() => {
     const options = { method: "GET", headers: { "X-BetaSeries-Key": API_KEY } };
 
-    fetch("https://api.betaseries.com/shows/discover?limit=20", options)
+    fetch("https://api.betaseries.com/shows/random?nb=20", options)
       .then((res) => res.json())
       .then((res) => setRandShows(res.shows))
       .catch((err) => console.error(err));

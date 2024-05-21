@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useNavigate } from "react-router-dom";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-export default function RandomShow() {
+export default function NewShow() {
   const navigate = useNavigate();
 
   const [shows, setShows] = useState([]);
@@ -38,9 +38,9 @@ export default function RandomShow() {
     slidesToScroll: 1,
   };
 
-  useEffect(() => {
-    console.log("Shows => ", shows);
-  }, [shows]);
+//   useEffect(() => {
+//     console.log("Shows => ", shows);
+//   }, [shows]);
 
   useEffect(() => {
     const options = { method: "GET", headers: { "X-BetaSeries-Key": API_KEY } };
