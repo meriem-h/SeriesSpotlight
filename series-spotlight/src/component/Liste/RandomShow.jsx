@@ -46,9 +46,9 @@ export default function RandomShow() {
   //   prevArrow: <Arrow />,
   // };
 
-  useEffect(() => {
-    console.log(randShows);
-  }, [randShows]);
+  // useEffect(() => {
+  //   console.log(randShows);
+  // }, [randShows]);
 
   useEffect(() => {
     const options = { method: "GET", headers: { "X-BetaSeries-Key": API_KEY } };
@@ -69,7 +69,7 @@ export default function RandomShow() {
 
         <article className="flex gap-5 mt-4 scrollBarStyled overflow-y-hidden">
             {randShows.map((show) => (
-                <figure  className="p-2 " onClick={() => handleShowInfo(show.id)}>
+                <figure  className="p-2 hover:cursor-pointer" onClick={() => handleShowInfo(show.id)} >
                   <div className="w-[10em] h-[14em] overflow-hidden">
                     <img
                       src={show.images.poster == null ? poster : show.images.poster}

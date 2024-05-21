@@ -1,5 +1,6 @@
 import React from "react";
-import Random from "./carouselle/RandomShow";
+import Random from "./Liste/RandomShow";
+import New from "./Liste/NewShow";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
@@ -23,13 +24,18 @@ export default function Home() {
 
   return (
     <main>
-      <h1>page home</h1>
-      <section className="w-[90%] m-auto">
+      {/* <h1>page home</h1> */}
+      <section className=" m-auto">
+        <article className="">
+          <h1 className="border-b-2">Nouveaux : </h1>
+          <New />
+        </article>
+
         <article className="">
           <h1 className="border-b-2">Ma liste : </h1>
           <Random />
         </article>
-        
+
         <article className="">
           <h1 className="border-b-2">A découvrire : </h1>
           <Random />

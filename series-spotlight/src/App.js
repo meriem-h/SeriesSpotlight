@@ -65,14 +65,17 @@ export default function App() {
   return (
 
     <div className="App min-h-screen text-white bg-slate-900">
-      <Router basename="/">
-        <Header />
-        <Routes>
-          <Route path="/" element={homePage} />
-          <Route path="/showInfo/:id" element={<ShowInfo />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <main className="w-[90%] m-auto">
+        <Router basename="/">
+          <Header />
+          <Routes>
+            <Route path="/" element={homePage} />
+            <Route path="/showInfo/:id" element={<ShowInfo />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </main>
+
     </div>
 
   );
