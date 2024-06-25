@@ -84,18 +84,20 @@ export default function ShowInfo() {
     //     });
     //   })
     //   .catch((err) => console.error(err));
-
-
   }, []);
 
   useEffect(() => {
-    // console.log("info ==> ", info);
+    console.log("info ==> ", info);
     // console.log("comments ==> ", comments);
     // console.log("similar ==> ", similar);
   }, [info, comments]);
 
   const handleShowInfo = (id) => {
     navigate(`/showInfo/${id}`);
+  };
+
+  const handleEpisodeInfo = (id, season) => {
+    navigate(`/episodeInfo/${id}/${season}`);
   };
 
   return (
@@ -198,7 +200,11 @@ export default function ShowInfo() {
         <article className="flex gap-4 mt-4 scrollBarStyled overflow-y-hidden">
           {info.seasons_details &&
             info.seasons_details.map((season, index) => (
-              <figure key={index} className="relative w-[25%] ">
+              <figure
+                key={index}
+                className="relative w-[25%] "
+                onClick={() => handleEpisodeInfo(id, season.number)}
+              >
                 <img
                   src={info.images?.show}
                   alt={info.title}

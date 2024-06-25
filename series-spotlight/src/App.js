@@ -7,6 +7,7 @@ import Home from "./component/Pages/Home"
 import Footer from "./component/Main/Footer"
 import Login from "./component/Main/Login"
 import ShowInfo from "./component/Pages/ShowInfo";
+import EpisodeInfo from "./component/Pages/EpisodeInfo"
 
 const API_KEY = process.env.REACT_APP_API_KEY
 const API_SECRET_KEY = process.env.REACT_APP_SECRET_API_KEY
@@ -71,6 +72,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={homePage} />
             <Route path="/showInfo/:id" element={<ShowInfo />} />
+            <Route path="/episodeInfo/:id/:season" element={<EpisodeInfo />} />
           </Routes>
           <Footer />
         </Router>

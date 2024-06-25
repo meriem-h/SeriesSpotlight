@@ -33,7 +33,7 @@ export default function NewShow() {
     dots: false,
     infinite: true,
     autoplay: true,
-    speed: 400,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
